@@ -1,0 +1,47 @@
+{
+  "manifest_version": "0.3",
+  "name": "simplify-mysql-mcp",
+  "display_name": "Simplify MySQL Toolkit",
+  "version": "1.1.0",
+  "description": "Full toolkit for the Simplify MariaDB/MySQL database: list/describe tables, fetch/insert/update/delete rows, add columns, run SQL, and backup/restore.",
+  "author": {
+    "name": "Theckla"
+  },
+  "server": {
+    "type": "python",
+    "entry_point": "server.py",
+    "mcp_config": {
+      "command": "${__dirname}/venv/bin/python3",
+      "args": ["${__dirname}/server.py"],
+      "env": {},
+      "platform_overrides": {
+        "win32": {
+          "command": "${__dirname}/venv/Scripts/python.exe",
+          "args": ["${__dirname}/server.py"]
+        }
+      }
+    }
+  },
+  "tools": [
+    { "name": "list_databases", "description": "List all databases on the server" },
+    { "name": "list_tables", "description": "List tables in a chosen database" },
+    { "name": "describe_table", "description": "Show columns, types, and keys for a table" },
+    { "name": "fetch_rows", "description": "Read rows from a table, with optional filters" },
+    { "name": "insert_row", "description": "Insert a new row into a table" },
+    { "name": "update_row", "description": "Update row(s) matching filters" },
+    { "name": "delete_row", "description": "Delete row(s) matching filters" },
+    { "name": "add_column", "description": "Add a new column to a table" },
+    { "name": "run_query", "description": "Run a read-only SQL query" },
+    { "name": "execute_sql", "description": "Run any SQL statement, including writes and DDL" },
+    { "name": "backup_database", "description": "Back up the database to a .sql file" },
+    { "name": "restore_database", "description": "Restore the database from a .sql backup" }
+  ],
+  "keywords": ["mysql", "mariadb", "database", "sql"],
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "python": ">=3.10"
+    }
+  }
+}
